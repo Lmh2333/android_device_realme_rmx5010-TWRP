@@ -7,8 +7,9 @@ on init
 
 service vendor.keymint-qti /vendor/bin/hw/android.hardware.security.keymint-service-qti
     class early_hal
-    user system
-    group system drmrpc
+    user root
+    group root drmrpc
+    seclabel u:r:recovery:s0
 
 on property:vendor.car.hiber=hiberExit
     stop vendor.keymint-qti
