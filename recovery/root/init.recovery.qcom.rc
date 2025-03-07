@@ -42,8 +42,7 @@ service overrideprops /system/bin/overrideprops.sh
     seclabel u:r:recovery:s0
 
 on init
-    start boot-hal-1-2
-    #start boot-qti
+    start vendor.boot-qti
 
 on fs
     wait /dev/block/platform/soc/${ro.boot.bootdevice}
@@ -66,8 +65,7 @@ on property:twrp.modules.loaded=true
     wait /sys/kernel/boot_adsp/boot
     write /sys/kernel/boot_adsp/boot 1
     wait /sys/class/power_supply/battery
-    #start health-default
-    start health-hal-2-1
+    start vendor.health-default
     start vendor.oplus.vibrator
     umount /firmware
 
