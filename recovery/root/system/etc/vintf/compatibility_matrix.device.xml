@@ -3,7 +3,7 @@
         vendor/qcom/opensource/core-utils/vendor_framework_compatibility_matrix.xml
         vendor/oplus/system/config/qcom/module_config/oplus_framework_compatibility_matrix.xml
 -->
-<compatibility-matrix version="8.0" type="framework">
+<compatibility-matrix version="4.0" type="framework">
     <hal format="aidl" optional="true">
         <name>android.hardware.audio.core</name>
         <version>2</version>

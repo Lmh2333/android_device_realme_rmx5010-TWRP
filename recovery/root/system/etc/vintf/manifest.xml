@@ -4,7 +4,7 @@
         device/qcom/qssi/framework_manifest.xml
         vendor/oplus/system/config/qcom/module_config/oplus_device_framework_manifest.xml
 -->
-<manifest version="8.0" type="framework">
+<manifest version="4.0" type="framework">
     <hal format="hidl" max-level="6">
         <name>android.frameworks.displayservice</name>
         <transport>hwbinder</transport>
