@@ -67,7 +67,7 @@ on property:twrp.modules.loaded=true
     wait /sys/class/power_supply/battery
     start vendor.health-default
     start vendor.oplus.vibrator
-    start vendor.keymint-strongbox
+    # start vendor.keymint-strongbox
     umount /firmware
 
 on property:twrp.all.users.decrypted=true

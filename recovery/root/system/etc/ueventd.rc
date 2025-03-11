@@ -1,17 +1,7 @@
 import /vendor/etc/ueventd.rc
 import /odm/etc/ueventd.rc
 import /odm/etc/ueventd.reserve.rc
-# ifdef OPLUS_FEATURE_WIFI_BDF
-# fangbinghua@CONNECTIVITY.WIFI.HARDWARE.BDF, add for mtk wifi cfg loading
-import /odm/etc/ueventd.wifi.rc
-# endif /* OPLUS_FEATURE_WIFI_BDF */
-# ifndef OPLUS_FEATURE_WIFI_BDF
-# WuGuotian@CONNECTIVITY.WIFI.HARDWARE.BDF.1065227 , 2021/05/26,
-# Modify for: multi projects using different bdf, adding persist into firmware_directories
-# firmware_directories /etc/firmware/ /odm/firmware/ /vendor/firmware/ /firmware/image/
-# else /* OPLUS_FEATURE_WIFI_BDF */
-firmware_directories /etc/firmware/ /odm/firmware/ /data/vendor/firmware/update/ /vendor/firmware/ /firmware/image/ /vendor/firmware_mnt/image/qca6490/ /data/oplus/fw_update/ /mnt/vendor/persist/copy/ /mnt/vendor/persist/ /odm/etc/wifi/ /vendor/firmware_mnt/image/
-# endif /* OPLUS_FEATURE_WIFI_BDF */
+firmware_directories /odm/firmware/ /vendor/firmware/ /firmware/ /firmware/image/ /mnt/vendor/persist/copy/ /mnt/vendor/persist/ /vendor/firmware_mnt/image/ /vendor/firmware_mnt/
 
 uevent_socket_rcvbuf_size 16M
 
