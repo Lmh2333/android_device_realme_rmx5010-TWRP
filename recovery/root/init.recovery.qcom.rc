@@ -44,10 +44,18 @@ service overrideprops /system/bin/overrideprops.sh
 on init
     start vendor.boot-qti
 
+on early-init
+    write /proc/sys/kernel/firmware_config/force_sysfs_fallback 1
+
+on init
+    mount_all /vendor/etc/charger_fw_fstab.qti --early
+
 on fs
     wait /dev/block/platform/soc/${ro.boot.bootdevice}
     symlink /dev/block/platform/soc/${ro.boot.bootdevice} /dev/block/bootdevice
-    write /proc/sys/kernel/firmware_config/force_sysfs_fallback 1
+    # Mount firmware
+    mkdir /firmware
+    mount vfat /dev/block/bootdevice/by-name/modem${ro.boot.slot_suffix} /firmware ro
 
 on boot
     setprop sys.usb.config adb
@@ -58,9 +66,7 @@ on property:twrp.modules.loaded=true
     # Mount persist
     mkdir /mnt/vendor/persist
     mount ext4 /dev/block/bootdevice/by-name/persist /mnt/vendor/persist ro
-    # Mount firmware
-    mkdir /firmware
-    mount vfat /dev/block/bootdevice/by-name/modem${ro.boot.slot_suffix} /firmware ro
+
     # Load ADSP firmware for PMIC
     wait /sys/kernel/boot_adsp/boot
     write /sys/kernel/boot_adsp/boot 1
@@ -68,7 +74,7 @@ on property:twrp.modules.loaded=true
     start vendor.health-default
     start vendor.oplus.vibrator
     # start vendor.keymint-strongbox
-    umount /firmware
+    # umount /firmware
 
 on property:twrp.all.users.decrypted=true
     umount /mnt/vendor/persist
