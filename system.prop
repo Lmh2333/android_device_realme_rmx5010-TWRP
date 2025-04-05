@@ -11,3 +11,6 @@ persist.sys.fuse.passthrough.enable=true
 
 # USB Config
 vendor.usb.use_ffs_mtp=1
+
+# seliunx 
+ro.seliunx=permissive

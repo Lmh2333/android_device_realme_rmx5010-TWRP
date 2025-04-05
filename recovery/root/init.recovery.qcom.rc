@@ -47,6 +47,12 @@ on init
 on early-init
     write /proc/sys/kernel/firmware_config/force_sysfs_fallback 1
 
+on early-init
+	# 强制设为宽容模式
+	setenforce 0
+	write /sys/fs/selinux/enforce 0    
+
+
 on init
     mount_all /vendor/etc/charger_fw_fstab.qti --early
 
