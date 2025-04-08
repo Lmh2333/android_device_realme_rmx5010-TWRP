@@ -65,7 +65,7 @@ subsystem vfio
 /dev/rtc0                 0640   system     system
 /dev/tty0                 0660   root       system
 /dev/graphics/*           0660   root       graphics
-/dev/input/*              0666   system     system
+/dev/input/*              0660   root       input
 /dev/v4l-touch*           0660   root       input
 /dev/snd/*                0660   system     audio
 /dev/bus/usb/*            0660   root       usb
